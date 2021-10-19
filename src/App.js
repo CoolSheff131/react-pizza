@@ -8,7 +8,7 @@ function App() {
         <div className="container">
           <div className="content__top">
             <Categories
-              onClick={(name) => alert(name)}
+              onClickItem={(name) => alert(name)}
               items={['Мясные', 'Вегетарианские', 'Гриль', 'Острые', 'Закрытые']}
             />
             <div className="sort">
