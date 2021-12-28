@@ -1,21 +1,15 @@
 import React from 'react'
 import { Categories, PizzaBlock, SortPopup } from '../components';
-import store from '../redux/store';
+import { useSelector } from 'react-redux';
 
 
-const inc = () => {
-  store.dispatch({
-    type: 'counter/incremented',
+function Home() {
+  const { items } = useSelector(({ pizzas, filters }) => {
+    return {
+      items: pizzas.items,
+      sortBy: filters.sortBy,
+    };
   });
-};
-
-store.subscribe(() => {
-  console.log('AAS', store.getState());
-});
-
-
-function Home({items}) {
-
     return (
         <div className="container">
           <button onClick={inc}></button>
@@ -28,7 +22,7 @@ function Home({items}) {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            {items.map((obj) => {
+            {items && items.map((obj) => {
               return <PizzaBlock key={obj.id} {...obj}/>
             })}            
           </div>
