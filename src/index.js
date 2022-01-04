@@ -9,7 +9,7 @@ import './scss/app.scss';
 import App from './App';
 
 ReactDOM.render(
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <Provider store={store}>
       <App />
     </Provider>
